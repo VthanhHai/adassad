@@ -35,6 +35,7 @@ namespace Tetris1
                 Draw();
             }
         }
+        //xoay khối gạch.
         public void Rotate()
         {
             int[,] tmp = new int[3, 3];
@@ -124,9 +125,9 @@ namespace Tetris1
          }*/
         public void Draw()
         {
-            //int y_ = y;
-            //pen.drawRec(0, 0,2,1,ConsoleColor.Red);
-            //Console.ForegroundColor = fg;
+            int y_ = y;
+            
+            Console.ForegroundColor = fg;
             for (int i = 0; i < 3; i++)
 
             {
@@ -134,7 +135,7 @@ namespace Tetris1
                 int yT = y + (i * pen.Height);
                 for (int j = 0; j < 3; j++)
                 {
-                    xL = x + (i * pen.Width);
+                    xL = x + (j * pen.Width);
                     if (cell[i, j] == 1)
                     {
                         pen.drawRec(xL, yT, xL + pen.Width, yT + pen.Height, fg);
@@ -142,7 +143,7 @@ namespace Tetris1
                     //Console.SetCursorPosition(x + j, y_);
                     // Console.Write("{0}", cell[i, j] == 0 ? ' ' : '*');
 
-                    
+
                 }
             }
         }
@@ -156,22 +157,14 @@ namespace Tetris1
                 int yT = y + (i * pen.Height);
                 for (int j = 0; j < 3; j++)
                 {
-                    xL = x + (i * pen.Width);
+                    xL = x + (j * pen.Width);
                     if (cell[i, j] == 1)
                     {
-                        pen.drawRec(xL, yT, xL + pen.Width, yT + pen.Height, fg);
+                        pen.drawRec(xL, yT, xL + pen.Width, yT + pen.Height, bg);
                     }
-                    else if (cell[i, j] == 0)
-                    {
-
-                        //Console.SetCursorPosition(x + j, y_);
-                        //Console.Write("{0}", cell[i, j] == 0 ? ' ' : '*');
-                        Console.BackgroundColor = bg;
-                        
-                    }
-                    //Console.Write(' ');
+                    
                 }
-                
+
             }
         }
         public void Move()

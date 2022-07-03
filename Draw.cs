@@ -14,16 +14,16 @@ namespace Tetris1
             get { return WIDTH; }
         }
 
-        const int HEIGHT = 2;
+        const int HEIGHT = 1;
         public int Height
         {
             get { return HEIGHT; }
         }
         public void drawRec(int xLeft, int ytop, int xRight, int yBottom, ConsoleColor color)
         {
-            for(int y=ytop;y<yBottom;y++)
+            for (int y = ytop; y < yBottom; y++)
             {
-                for(int x=xLeft;x<xRight;x++)
+                for (int x = xLeft; x < xRight; x++)
                 {
                     Console.SetCursorPosition(x, y);
                     Console.BackgroundColor = color;

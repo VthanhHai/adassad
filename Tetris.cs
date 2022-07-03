@@ -8,15 +8,16 @@ namespace Tetris1
 {
     class Tetris
     {
-
+        private Board Board;
         public void run()
         {
+            Board.Draw();
             cell.Draw();
 
             var readkeys = new Task(Readkeys);//var la ten bien, var la bien
             readkeys.Start();
             var animation = new Task(Animation);
-            //animation.Start();
+            animation.Start();
 
             var tasks = new[] { readkeys };
             Task.WaitAll(tasks);
@@ -27,6 +28,7 @@ namespace Tetris1
         }
         public Tetris()
         {
+            Board = new Board( ConsoleColor.Black,ConsoleColor.Red);    
             cell = new Cell(ConsoleColor.Black, ConsoleColor.Red);
         }
         private Cell cell;
@@ -41,7 +43,7 @@ namespace Tetris1
                 {
                     case ConsoleKey.LeftArrow: cell.X = cell.X - 1; break;
                     case ConsoleKey.RightArrow: cell.X = cell.X + 1; break;
-                    case ConsoleKey.UpArrow: cell.Rotate(); break;
+                    case ConsoleKey.UpArrow: cell.Rotate(); break; // xoay khối gạch.
                     case ConsoleKey.DownArrow: cell.Y = cell.Y + 2; break;
                 }
             }
